@@ -1,0 +1,1139 @@
+{
+	"info": {
+		"_postman_id": "87edc129-b3ca-4767-8227-04f6f3286011",
+		"name": "MOCK BAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2626143",
+		"_collection_link": "https://www.postman.com/anggitowibisono/workspace/anggito-wibisono-s-public-workspace/collection/2626143-87edc129-b3ca-4767-8227-04f6f3286011?action=share&source=collection_link&creator=2626143"
+	},
+	"item": [
+		{
+			"name": "Transfer",
+			"item": [
+				{
+					"name": "Check Valid Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transfer/BRI/8888888888",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transfer",
+								"BRI",
+								"8888888888"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/transfer/BRI/123123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transfer",
+										"BRI",
+										"123123"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:29:20 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"account not found\"\n}"
+						},
+						{
+							"name": "200 Account valid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/transfer/BRI/8888888888",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"transfer",
+										"BRI",
+										"8888888888"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:32:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"account\": {\n        \"BankID\": \"BRI\",\n        \"AccountID\": \"8888888888\",\n        \"Name\": \"anggito\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BankID\": \"BCA\",\r\n    \"AccountID\": \"9188888888\",\r\n    \"Amount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/transfer",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transfer"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BankID\": \"BRI\",\r\n    \"AccountID\": \"123123\",\r\n    \"Amount\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/transfer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:43:48 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"account not found\"\n}"
+						},
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BankID\": \"BCA\",\r\n    \"AccountID\": \"9188888888\",\r\n    \"Amount\": 1000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/transfer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:44:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"transfer success!\"\n}"
+						},
+						{
+							"name": "400 Amount Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BankID\": \"BCA\",\r\n    \"AccountID\": \"9188888888\",\r\n    \"Amount\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/transfer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"transfer"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 15:44:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"amount cannot be zero!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Bank",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transfer/list-bank",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transfer",
+								"list-bank"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Biller",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/biller",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"biller"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/biller",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"biller"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 16:30:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"BillerID\": \"012\",\n            \"Name\": \"PDAM\"\n        },\n        {\n            \"BillerID\": \"013\",\n            \"Name\": \"PLN\"\n        },\n        {\n            \"BillerID\": \"014\",\n            \"Name\": \"Telkom\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Check Biller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/biller/012/110000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"biller",
+								"012",
+								"110000"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/biller/012/110000",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"biller",
+										"012",
+										"110000"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 16:31:15 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"biller\": {\n        \"BillerID\": \"012\",\n        \"Name\": \"PDAM\",\n        \"Amount\": 860.7999877929688,\n        \"AccountID\": \"110000\",\n        \"Paid\": false\n    }\n}"
+						},
+						{
+							"name": "400 biller not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/biller/012/11000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"biller",
+										"012",
+										"11000"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 16:33:05 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"biller not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Pay",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"BillerID\": \"012\",\r\n    \"AccountID\": \"110000\",\r\n    \"Amount\": 697391.6875\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/biller",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"biller"
+							]
+						},
+						"description": "BillerID AccountID and Amount must be match"
+					},
+					"response": [
+						{
+							"name": "400 biller not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BillerID\": \"012\",\r\n    \"AccountID\": \"11000\",\r\n    \"Amount\": 123213\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/biller",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"biller"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 16:37:29 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"biller not found\"\n}"
+						},
+						{
+							"name": "200 success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"BillerID\": \"012\",\r\n    \"AccountID\": \"110000\",\r\n    \"Amount\": 860.7999877929688\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/biller",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"biller"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 16:39:04 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"transfer success!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh paid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/biller/refresh",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"biller",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "VA",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/va",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"va"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/va",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"va"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 17:11:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"VAID\": \"88789\",\n            \"Name\": \"Traveloka\"\n        },\n        {\n            \"VAID\": \"88708\",\n            \"Name\": \"Tokopedia\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate VA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/va/88789",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"va",
+								"88789"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/va/88789",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"va",
+										"88789"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 17:11:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"VAID\": \"88789\",\n        \"VANumber\": \"5117514326429261\",\n        \"Amount\": 76967.6015625,\n        \"Paid\": false\n    }\n}"
+						},
+						{
+							"name": "400 Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/va/8878",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"va",
+										"8878"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 17:12:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"va not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Pay",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"VAID\": \"88789\",\r\n\t\t\"VANumber\": \"5202942419285408\",\r\n\t\t\"Amount\": 4493.14013671875\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/va",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"va"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "400 already paid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"VAID\": \"88789\",\r\n\t\t\"VANumber\": \"5117514326429261\",\r\n\t\t\"Amount\": 76967.6015625\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/va",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"va"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 17:14:15 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"va already paid!\"\n}"
+						},
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"VAID\": \"88789\",\r\n\t\t\"VANumber\": \"5202942419285408\",\r\n\t\t\"Amount\": 4493.14013671875\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/va",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"va"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 17:15:10 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"va paid success!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh paid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/va/refresh",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"va",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Deposito",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/deposito",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"deposito"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/deposito",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"deposito"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 18:14:56 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "75"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"Name\": \"MAXI\",\n        \"DepositoID\": \"MAXI\"\n    },\n    {\n        \"Name\": \"FLEXI\",\n        \"DepositoID\": \"FLEXI\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Create Deposito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DepositoID\": \"MAXI\",\r\n    \"AccountID\": \"12345678\",\r\n    \"Amount\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/deposito",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"deposito"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"DepositoID\": \"MAXI\",\r\n    \"AccountID\": \"12345678\",\r\n    \"Amount\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/deposito",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"deposito"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 18:12:34 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"deposito created!\"\n}"
+						},
+						{
+							"name": "400 not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"DepositoID\": \"MAXIS\",\r\n    \"AccountID\": \"12345678\",\r\n    \"Amount\": 100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/deposito",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"deposito"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 18:14:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"deposito not found\"\n}"
+						},
+						{
+							"name": "400 amount zero",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"DepositoID\": \"MAXI\",\r\n    \"AccountID\": \"12345678\",\r\n    \"Amount\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/deposito",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"deposito"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 18:14:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"amount cannot be zero\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Created by Account ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/deposito/MAXI/12345678",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"deposito",
+								"MAXI",
+								"12345678"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/deposito/MAXI/12345678",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"deposito",
+										"MAXI",
+										"12345678"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 13 Jun 2024 18:12:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"DepositoName\": \"MAXI\",\n            \"DepositoID\": \"MAXI\",\n            \"DepositoAccount\": \"3538059252794572\",\n            \"AccountID\": \"12345678\",\n            \"Balance\": 100\n        },\n        {\n            \"DepositoName\": \"MAXI\",\n            \"DepositoID\": \"MAXI\",\n            \"DepositoAccount\": \"3538375341441569\",\n            \"AccountID\": \"12345678\",\n            \"Balance\": 100\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
