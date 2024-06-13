@@ -73,6 +73,15 @@ func main() {
 	{
 		transferGroup := apiGroup.Group("/transfer")
 		{
+			transferGroup.GET("/list-bank", func(c *gin.Context) {
+				// no implemented
+				c.JSON(200, gin.H{
+					"data": datasource.BankMaster,
+				})
+
+				return
+			})
+
 			transferGroup.GET("/:bankid/:accountid", func(c *gin.Context) {
 				// no implemented
 				bankid := c.Param("bankid")

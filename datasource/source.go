@@ -13,6 +13,22 @@ type BankAccount struct {
 	Name      string
 }
 
+type Bank struct {
+	Name   string
+	BankID string
+}
+
+var BankMaster = []Bank{
+	{
+		Name:   "BRI",
+		BankID: "BRI",
+	},
+	{
+		Name:   "BCA",
+		BankID: "BCA",
+	},
+}
+
 var Account map[string]interface{} = map[string]interface{}{
 	"BRI": map[string]interface{}{
 		"8888888888": BankAccount{
