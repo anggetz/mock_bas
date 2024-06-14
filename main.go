@@ -264,8 +264,17 @@ func main() {
 				})
 			})
 
+			vagroup.GET("/list-generated-va/:va_id", func(ctx *gin.Context) {
+				va_id := ctx.Param("va_id")
+				// no implement
+				ctx.JSON(200, gin.H{
+					"data": datasource.VAGenerated[va_id],
+				})
+			})
+
 			vagroup.POST("/:va_id", func(c *gin.Context) {
 				// no implement
+
 				va_id := c.Param("va_id")
 
 				log.Println(LOG_IDENTIFIER, "request:", va_id)
