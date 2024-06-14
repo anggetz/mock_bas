@@ -29,48 +29,60 @@ var BankMaster = []Bank{
 	},
 }
 
+var cacheCCGen = make(map[string]string)
+
+func genAccountId(key string) string {
+	if val, ok := cacheCCGen[key]; ok {
+		return val
+	} else {
+		cacheCCGen[key] = faker.CCNumber()
+		return cacheCCGen[key]
+	}
+
+}
+
 var Account map[string]interface{} = map[string]interface{}{
 	"BRI": map[string]interface{}{
-		"8888888888": BankAccount{
+		genAccountId("bri_1"): BankAccount{
 			BankID:    "BRI",
-			AccountID: "8888888888",
+			AccountID: genAccountId("bri_1"),
 			Name:      "anggito",
 		},
-		"8888888889": BankAccount{
+		genAccountId("bri_2"): BankAccount{
 			BankID:    "BRI",
-			AccountID: "8888888889",
+			AccountID: genAccountId("bri_2"),
 			Name:      "radit",
 		},
-		"8888888890": BankAccount{
+		genAccountId("bri_3"): BankAccount{
 			BankID:    "BRI",
-			AccountID: "8888888890",
+			AccountID: genAccountId("bri_3"),
 			Name:      "zoel",
 		},
-		"8888888891": BankAccount{
+		genAccountId("bri_4"): BankAccount{
 			BankID:    "BRI",
-			AccountID: "8888888891",
+			AccountID: genAccountId("bri_4"),
 			Name:      "yushi",
 		},
 	},
 	"BCA": map[string]interface{}{
-		"9188888888": BankAccount{
+		genAccountId("bca_1"): BankAccount{
 			BankID:    "BCA",
-			AccountID: "9188888888",
+			AccountID: genAccountId("bca_1"),
 			Name:      "putri",
 		},
-		"9288888889": BankAccount{
+		genAccountId("bca_2"): BankAccount{
 			BankID:    "BCA",
-			AccountID: "9288888889",
+			AccountID: genAccountId("bca_2"),
 			Name:      "kevin",
 		},
-		"9388888890": BankAccount{
+		genAccountId("bca_3"): BankAccount{
 			BankID:    "BCA",
-			AccountID: "9388888890",
+			AccountID: genAccountId("bca_3"),
 			Name:      "daffa",
 		},
-		"9488888891": BankAccount{
+		genAccountId("bca_4"): BankAccount{
 			BankID:    "BCA",
-			AccountID: "9488888891",
+			AccountID: genAccountId("bca_4"),
 			Name:      "huda",
 		},
 	},
@@ -116,92 +128,92 @@ func GetAmount() float32 {
 
 var BillerAccount map[string]map[string]*Biller = map[string]map[string]*Biller{
 	"012": {
-		"110000": &Biller{
+		genAccountId("012_1"): &Biller{
 			BillerID:  "012",
 			Name:      "PDAM",
 			Amount:    float64(GetAmount()),
-			AccountID: "110000",
+			AccountID: genAccountId("012_1"),
 			Paid:      false,
 		},
-		"120000": &Biller{
+		genAccountId("012_2"): &Biller{
 			BillerID:  "012",
 			Name:      "PDAM",
 			Amount:    float64(GetAmount()),
-			AccountID: "120000",
+			AccountID: genAccountId("012_2"),
 			Paid:      false,
 		},
-		"130000": &Biller{
+		genAccountId("012_3"): &Biller{
 			BillerID:  "012",
 			Name:      "PDAM",
 			Amount:    float64(GetAmount()),
-			AccountID: "130000",
+			AccountID: genAccountId("012_3"),
 			Paid:      false,
 		},
-		"140000": &Biller{
+		genAccountId("012_4"): &Biller{
 			BillerID:  "012",
 			Name:      "PDAM",
 			Amount:    float64(GetAmount()),
-			AccountID: "140000",
+			AccountID: genAccountId("012_4"),
 			Paid:      false,
 		},
 	},
 	"30305": {
-		"1100001": &Biller{
+		genAccountId("30305_1"): &Biller{
 			BillerID:  "30305",
 			Name:      "PLN",
 			Amount:    float64(GetAmount()),
-			AccountID: "1100001",
+			AccountID: genAccountId("30305_1"),
 			Paid:      false,
 		},
-		"1200001": &Biller{
+		genAccountId("30305_2"): &Biller{
 			BillerID:  "30305",
 			Name:      "PLN",
 			Amount:    float64(GetAmount()),
-			AccountID: "1200001",
+			AccountID: genAccountId("30305_2"),
 			Paid:      false,
 		},
-		"1300001": &Biller{
+		genAccountId("30305_3"): &Biller{
 			BillerID:  "30305",
 			Name:      "PLN",
 			Amount:    float64(GetAmount()),
-			AccountID: "1300001",
+			AccountID: genAccountId("30305_3"),
 			Paid:      false,
 		},
-		"1400001": &Biller{
+		genAccountId("30305_4"): &Biller{
 			BillerID:  "30305",
 			Name:      "PLN",
 			Amount:    float64(GetAmount()),
-			AccountID: "1400001",
+			AccountID: genAccountId("30305_4"),
 			Paid:      false,
 		},
 	},
 	"014": {
-		"1100002": &Biller{
+		genAccountId("014_1"): &Biller{
 			BillerID:  "014",
 			Name:      "Telkom",
 			Amount:    float64(GetAmount()),
-			AccountID: "1100002",
+			AccountID: genAccountId("014_1"),
 			Paid:      false,
 		},
-		"1200002": &Biller{
+		genAccountId("014_2"): &Biller{
 			BillerID:  "014",
 			Name:      "Telkom",
 			Amount:    float64(GetAmount()),
-			AccountID: "1200002",
+			AccountID: genAccountId("014_2"),
 			Paid:      false,
 		},
-		"1300002": &Biller{
+		genAccountId("014_3"): &Biller{
 			BillerID:  "014",
 			Name:      "Telkom",
 			Amount:    float64(GetAmount()),
-			AccountID: "1300002",
+			AccountID: genAccountId("014_3"),
 			Paid:      false,
 		},
-		"1400002": &Biller{
+		genAccountId("014_4"): &Biller{
 			BillerID:  "014",
 			Name:      "Telkom",
 			Amount:    float64(GetAmount()),
-			AccountID: "1400002",
+			AccountID: genAccountId("014_4"),
 			Paid:      false,
 		},
 	},

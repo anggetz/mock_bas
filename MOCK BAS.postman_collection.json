@@ -34,12 +34,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/transfer/BRI/123123",
-									"protocol": "http",
+									"raw": "{{host}}/transfer/BRI/123123",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"transfer",
 										"BRI",
@@ -284,6 +282,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/transfer/list-account",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"transfer",
+								"list-account"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -367,12 +383,10 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/biller/012/110000",
-									"protocol": "http",
+									"raw": "{{host}}/biller/012/110000",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"biller",
 										"012",
@@ -572,6 +586,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/biller/list-account",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"biller",
+								"list-account"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -656,12 +688,10 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/va/88789",
-									"protocol": "http",
+									"raw": "{{host}}/va/88789",
 									"host": [
-										"localhost"
+										"{{host}}"
 									],
-									"port": "8080",
 									"path": [
 										"va",
 										"88789"

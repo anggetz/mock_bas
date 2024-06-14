@@ -1,8 +1,11 @@
 package main
 
 import (
+	"io"
 	"mockapi/datasource"
 	"net/http"
+	"os"
+	"time"
 
 	"github.com/bxcodec/faker/v3"
 	"github.com/gin-gonic/gin"
@@ -69,6 +72,9 @@ var BillerCache []*datasource.Biller
 func main() {
 	r := gin.Default()
 
+	f, _ := os.Create(time.Now().Format(time.RFC3339) + ".log")
+	gin.DefaultWriter = io.MultiWriter(f)
+
 	apiGroup := r.Group("/v1/api")
 	{
 		transferGroup := apiGroup.Group("/transfer")
@@ -77,6 +83,15 @@ func main() {
 				// no implemented
 				c.JSON(200, gin.H{
 					"data": datasource.BankMaster,
+				})
+
+				return
+			})
+
+			transferGroup.GET("/list-account", func(c *gin.Context) {
+				// no implemented
+				c.JSON(200, gin.H{
+					"data": datasource.Account,
 				})
 
 				return
@@ -144,6 +159,13 @@ func main() {
 
 		billerGroup := apiGroup.Group("/biller")
 		{
+			billerGroup.GET("/list-account", func(ctx *gin.Context) {
+				// no implemented
+				ctx.JSON(200, gin.H{
+					"data": datasource.BillerAccount,
+				})
+			})
+
 			billerGroup.GET("/", func(ctx *gin.Context) {
 				// no implemented
 				ctx.JSON(200, gin.H{
