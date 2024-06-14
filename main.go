@@ -1,15 +1,15 @@
 package main
 
 import (
-	"io"
+	"log"
 	"mockapi/datasource"
 	"net/http"
-	"os"
-	"time"
 
 	"github.com/bxcodec/faker/v3"
 	"github.com/gin-gonic/gin"
 )
+
+const LOG_IDENTIFIER = "MOCK-LOG"
 
 func checkValidAccount(bankid, accountid string) (bool, interface{}) {
 	if bankMap, ok := datasource.Account[bankid]; ok {
@@ -72,9 +72,6 @@ var BillerCache []*datasource.Biller
 func main() {
 	r := gin.Default()
 
-	f, _ := os.Create(time.Now().Format(time.RFC3339) + ".log")
-	gin.DefaultWriter = io.MultiWriter(f)
-
 	apiGroup := r.Group("/v1/api")
 	{
 		transferGroup := apiGroup.Group("/transfer")
@@ -98,9 +95,12 @@ func main() {
 			})
 
 			transferGroup.GET("/:bankid/:accountid", func(c *gin.Context) {
+
 				// no implemented
 				bankid := c.Param("bankid")
 				accountid := c.Param("accountid")
+
+				log.Println(LOG_IDENTIFIER, "bankid:", bankid, "accountid", accountid)
 
 				if ok, account := checkValidAccount(bankid, accountid); ok {
 					c.JSON(200, gin.H{
@@ -133,6 +133,8 @@ func main() {
 
 					return
 				}
+
+				log.Println(LOG_IDENTIFIER, "request:", bodyStruct)
 
 				if bodyStruct.Amount == 0 {
 					c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
@@ -178,6 +180,8 @@ func main() {
 				billerid := c.Param("biller_id")
 				accountid := c.Param("biller_account")
 
+				log.Println(LOG_IDENTIFIER, "request:", billerid, accountid)
+
 				if ok, biller := checkValidAccountBiller(billerid, accountid); ok {
 					c.JSON(200, gin.H{
 						"biller": biller,
@@ -207,6 +211,8 @@ func main() {
 
 					return
 				}
+
+				log.Println(LOG_IDENTIFIER, "request:", bodyStruct)
 
 				if ok, biller := checkValidAccountBiller(bodyStruct.BillerID, bodyStruct.AccountID); ok {
 					if biller.Paid {
@@ -262,6 +268,8 @@ func main() {
 				// no implement
 				va_id := c.Param("va_id")
 
+				log.Println(LOG_IDENTIFIER, "request:", va_id)
+
 				if checkValidVa(va_id) {
 					va := faker.CCNumber()
 					vaGenerated := &datasource.VAGen{
@@ -303,6 +311,8 @@ func main() {
 
 					return
 				}
+
+				log.Println(LOG_IDENTIFIER, "request:", bodyStruct)
 
 				if ok, va := checkValidVaGenerated(bodyStruct.VAID, bodyStruct.VANumber); ok {
 
@@ -353,6 +363,8 @@ func main() {
 				deposito_id := ctx.Param("deposito_id")
 				account_id := ctx.Param("account_id")
 
+				log.Println(LOG_IDENTIFIER, "request:", deposito_id, account_id)
+
 				if deps, ok := datasource.DepositoAccountList[deposito_id][account_id]; ok {
 					ctx.JSON(200, gin.H{
 						"data": deps,
@@ -383,6 +395,8 @@ func main() {
 
 					return
 				}
+
+				log.Println(LOG_IDENTIFIER, "request:", bodyStruct)
 
 				if bodyStruct.Amount == 0 {
 					c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
